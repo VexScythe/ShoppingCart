@@ -1,12 +1,12 @@
 export function Navbar() {
   return (
-    <div className="navbar bg-base-100 bg-rose-500">
-      <div className="flex-1">
-        <p className="btn btn-ghost text-xl hover:bg-rose-500 cursor-default">
+    <div className="navbar bg-base-100 bg-slate-200">
+      <div className="flex-none basis-10">
+        <p className="btn btn-ghost text-xl hover:bg-slate-200 cursor-default">
           JewelStore.com
         </p>
       </div>
-      <div className="flex-none">
+      <div className="flex-1 justify-center">
         <a tabIndex={0} className="btn btn-ghost text-xl">
           Home
         </a>
@@ -17,7 +17,7 @@ export function Navbar() {
           Shop
         </a>
       </div>
-      <div className="flex-none">
+      <div className="flex-none w-[200px] justify-end">
         <div className="dropdown dropdown-end">
           <div tabIndex={0} role="button" className="btn btn-ghost btn-circle">
             <div className="indicator">
@@ -46,7 +46,7 @@ export function Navbar() {
               <span className="font-bold text-lg">8 Items</span>
               <span className="text-info">Subtotal: $999</span>
               <div className="card-actions">
-                <button className="btn btn-primary btn-block bg-slate-800 hover:bg-rose-500">
+                <button className="btn btn-primary btn-block bg-slate-800 hover:bg-slate-200 hover:text-primary">
                   View cart
                 </button>
               </div>

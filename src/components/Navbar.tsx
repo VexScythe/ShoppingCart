@@ -1,4 +1,9 @@
+import { useCart } from '../stores/CartContext';
+import { Link } from 'react-router-dom';
+
 export function Navbar() {
+  const cart = useCart();
+
   return (
     <div className="navbar bg-base-100 bg-slate-200">
       <div className="flex-none basis-10">
@@ -7,15 +12,15 @@ export function Navbar() {
         </p>
       </div>
       <div className="flex-1 justify-center">
-        <a tabIndex={0} className="btn btn-ghost text-xl">
+        <Link tabIndex={0} className="btn btn-ghost text-xl" to="/">
           Home
-        </a>
-        <a tabIndex={0} className="btn btn-ghost text-xl">
+        </Link>
+        <Link tabIndex={0} className="btn btn-ghost text-xl">
           About
-        </a>
-        <a tabIndex={0} className="btn btn-ghost text-xl">
+        </Link>
+        <Link tabIndex={0} className="btn btn-ghost text-xl" to="/Shop">
           Shop
-        </a>
+        </Link>
       </div>
       <div className="flex-none w-[200px] justify-end">
         <div className="dropdown dropdown-end">
@@ -35,7 +40,9 @@ export function Navbar() {
                   d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
                 />
               </svg>
-              <span className="badge badge-sm indicator-item">8</span>
+              <span className="badge badge-sm indicator-item">
+                {cart.cartData.totalQuantity}
+              </span>
             </div>
           </div>
           <div
@@ -43,8 +50,12 @@ export function Navbar() {
             className="mt-3 z-[1] card card-compact dropdown-content w-52 bg-base-100 shadow"
           >
             <div className="card-body">
-              <span className="font-bold text-lg">8 Items</span>
-              <span className="text-info">Subtotal: $999</span>
+              <span className="font-bold text-lg">
+                {cart.cartData.totalQuantity} Items
+              </span>
+              <span className="text-info">
+                Subtotal: ${cart.cartData.totalPrice}
+              </span>
               <div className="card-actions">
                 <button className="btn btn-primary btn-block bg-slate-800 hover:bg-slate-200 hover:text-primary">
                   View cart

@@ -57,9 +57,11 @@ export function Navbar() {
                 Subtotal: ${cart.cartData.totalPrice}
               </span>
               <div className="card-actions">
-                <button className="btn btn-primary btn-block bg-slate-800 hover:bg-slate-200 hover:text-primary">
-                  View cart
-                </button>
+                <Link to="/ViewCart">
+                  <button className="btn btn-primary btn-block bg-slate-800 hover:bg-slate-200 hover:text-primary">
+                    View cart
+                  </button>
+                </Link>
               </div>
             </div>
           </div>

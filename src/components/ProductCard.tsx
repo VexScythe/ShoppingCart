@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { useCart } from '../stores/CartContext';
+import { Link } from 'react-router-dom';
 
-type Product = {
+export type Product = {
   id: number;
   title: string;
   price: number;
@@ -10,7 +11,7 @@ type Product = {
   image: string;
 };
 
-type CardProps = {
+export type CardProps = {
   product: Product;
 };
 
@@ -31,11 +32,19 @@ export function ProductCard({ product }: CardProps) {
   const addToCart = () => {
     const updatedQuantity = cartData.totalQuantity + quantity;
     const updatedPrice = cartData.totalPrice + cardTotalPrice;
+    const updatedProduct = {
+      id: cartData.productDetail.length,
+      name: product.title,
+      localQuantity: quantity,
+      localPrice: cardTotalPrice,
+    };
 
     setCartData({
+      productDetail: [...cartData.productDetail, updatedProduct],
       totalQuantity: updatedQuantity,
       totalPrice: updatedPrice,
     });
+    console.log(cartData);
   };
 
   const cardTotalPrice = product.price * quantity;
@@ -43,11 +52,13 @@ export function ProductCard({ product }: CardProps) {
   return (
     <div className="card w-96 bg-base-100 shadow-xl">
       <figure>
-        <img
-          src={product.image}
-          alt={product.title}
-          className="w-[120px] h-[120px]"
-        />
+        <Link to={`/Shop/${product.id}`} state={{ product: product }}>
+          <img
+            src={product.image}
+            alt={product.title}
+            className="w-[120px] h-[120px]"
+          />
+        </Link>
       </figure>
       <div className="card-body">
         <h2 className="card-title">{product.title}</h2>

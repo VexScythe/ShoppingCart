@@ -1,6 +1,14 @@
 import React, { createContext, useContext, useState } from 'react';
 
+type ProductDetail = {
+  id: number;
+  name: string;
+  localQuantity: number;
+  localPrice: number;
+};
+
 type CartData = {
+  productDetail: ProductDetail[];
   totalQuantity: number;
   totalPrice: number;
 };
@@ -15,6 +23,7 @@ const CartContext = createContext<
 
 export const CartProvider: React.FC = ({ children }) => {
   const [cartData, setCartData] = useState<CartData>({
+    productDetail: [],
     totalQuantity: 0,
     totalPrice: 0,
   });

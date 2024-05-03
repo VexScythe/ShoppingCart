@@ -15,7 +15,7 @@ export function Navbar() {
         <Link tabIndex={0} className="btn btn-ghost text-xl" to="/">
           Home
         </Link>
-        <Link tabIndex={0} className="btn btn-ghost text-xl">
+        <Link tabIndex={0} className="btn btn-ghost text-xl" to="/About">
           About
         </Link>
         <Link tabIndex={0} className="btn btn-ghost text-xl" to="/Shop">
